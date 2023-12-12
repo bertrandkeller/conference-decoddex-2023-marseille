@@ -72,7 +72,7 @@
     }
 
     .containers-v .col-u.visible {
-      flex: 65;
+      flex: 40;
       background: #ff7f00;
     }
 
@@ -81,8 +81,20 @@
     }
 
     .containers-v .col-f {
-      flex: 20;
+      flex: 50;
       background: #ff7f00;
+    }
+
+    .containers-v2 .col-u.visible {
+      flex: 75;
+    }
+
+    .containers-v2 .col-t.visible {
+      flex: 11;
+    }
+
+    .containers-v2 .col-f {
+      flex: 18;
     }
 
     section:has(.fixed) {
@@ -590,6 +602,16 @@
       border-color: #94a0b4;
     }
 
+    .badge {
+      margin-top: -0.1em;
+      padding: 0.2em 0.3em 0;
+      background: #333;
+      position: absolute;
+      margin-left: 20px;
+      right: 20vw;
+      border-radius: 5px;
+    }
+
 
   </style>
 </head>
@@ -651,22 +673,53 @@
             ### <span class="text-white">Simple correction<br>sans redirection</span>
             ---
             <!-- .slide: data-background="rgba(75,150,76, 1)" -->
-            ### <span class="text-white">Ce qu’on propose</span><br><span class="text-white fragment">quand même</span>
-            ---
-            ### Exemples
-            1. Créer une directive européenne réemploi
-            1. Consigner les EEE neufs
-            1. Allonger la durée de la garantie légale
-            1. Contrôle consommateurs sur les mises à jour logicielles
-            1. Enseignement de la sobriété numérique
-            1. France champion de l’écoconception numériques
-            1. Obligation l’écoconception des services numériques
-            1. Standards et affichage internationaux et européens
-            ---
-            <!-- .slide: data-background="rgba(75,150,76, 1)" -->
             ## <span class="text-white">Les chiffres</span>
             ---
-            ### <small>Contribution dépassement limites planétaires</small>
+            ### Estimation de répartition d’impact produit
+          </textarea>
+        </section>
+        <section class="container" data-transition="none">
+          <div class="containers containers-v">
+            <div class="col col-u fragment" data-fragment-index="2">
+              <span class="elm">
+                <h4 class="m0">Utilisation <span class="fragment badge" data-fragment-index="5">45%</span></h4>
+              </span>
+            </div>
+            <div class="col col-t fragment" data-fragment-index="1">
+              <span class="elm">
+                <h4 class="m0">Transport <span class="fragment badge" data-fragment-index="4">1%</span></h4>
+              </span>
+            </div>
+            <div class="col col-f visible">
+              <span class="elm">
+                <h4 class="m0">Fabrication <span class="fragment badge" data-fragment-index="3">54%</span></h4>
+              </span>
+            </div>
+          </div>
+      </section>
+      <section class="container" data-transition="none">
+          <div class="containers containers-v containers-v2">
+            <div class="col col-u fragment" data-fragment-index="2">
+              <span class="elm">
+                <h4 class="m0">Terminaux <span class="fragment badge" data-fragment-index="5">71%</span></h4>
+              </span>
+            </div>
+            <div class="col col-t fragment" data-fragment-index="1">
+              <span class="elm">
+                <h4 class="m0">Réseaux <span class="fragment badge" data-fragment-index="4">11%</span></h4>
+              </span>
+            </div>
+            <div class="col col-f visible">
+              <span class="elm">
+                <h4 class="m0">Data Center <span class="fragment badge" data-fragment-index="3">18%</span></h4>
+              </span>
+            </div>
+          </div>
+      </section>
+        <section data-markdown data-transition="none">
+          <textarea data-template>
+            ### Contribution du numérique dépassement limites planétaires au niveau européen
+            ---
             | | Frontières de l’UE-28 par indicateur |Pourcentage des frontières de l’UE-28 par indicateur |
             | ----| --- | ---- |
             | Utilisation des ressources, minéraux et métaux - kg éq. Sb | 14 700 000 | **39,3 %** |
@@ -684,48 +737,42 @@
             | Émission de particules - apparition de maladies | 34 500 | **23,2 %** |
             | Formation d’ozone photochimique, santé humaine - kg éq. COVNM | 27 200 000 000 | 1,7 % |
             ---
-            ## Complexité
+            ## A retenir
+            Numérique = **6%** du PIB
+            ---
+            ## Mais c’est
+            > **40%** de notre budget pour rester en dessous de **1,5°C** de réchauffement climatique est dédié au numérique
+            ---
+            ## iOT
+             1. La majorité des objets connectés sont fondus dans notre quotidien et donc invisibles
+             1. Les objets connectés représentent déjà près de 1% de la consommation électrique de l’UE
+             1. Les objets connectés participent à l’entropie matière du numérique
+             1. Le trafic de données devrait être x18 entre 2018 et 2030, principalement drivé par l’IoT et les smartphones
+            ---
+            ### IA
+             1. L’apprentissage demande une forte puissance de calcul
+             1. Plus la besoin est complexe, plus il faut de données
+             1. La fabrication des calculateurs entre en conflit avec les autres besoins en matières premières
+            ---
+            <!-- .slide: data-background="rgba(75,150,76, 1)" -->
+            ### <span class="text-white">Ce qu’on propose</span><br><span class="text-white fragment">quand même</span>
+            ---
+            ### Exemples
+            1. Créer une directive européenne réemploi
+            1. Consigner les EEE neufs
+            1. Allonger la durée de la garantie légale
+            1. Contrôle consommateurs sur les mises à jour logicielles
+            1. Enseignement de la sobriété numérique
+            1. France champion de l’écoconception numériques
+            1. Obligation l’écoconception des services numériques
+            1. Standards et affichage internationaux et européens
+            ---
+            ## Complexité !
             ---
             ### Principe de Conway
             > La structure d’un problème reflète la structure de l’organisation qui l’a créé.<br>
               **Bill Corcoran**
-            ---
-            ## Numérique
-            **6%** du PIB
-            ---
-            > **40%** de notre budget pour rester en dessous de **1,5°C** de réchauffement climatique est dédié au numérique
           </textarea>
-      </section>
-      <section class="container" data-auto-animate>
-          <div class="containers containers-v">
-            <div class="col col-u fragment" data-fragment-index="2">
-              <span class="elm">
-                <h4 class="m0">Utilisation <span class="fragment" data-fragment-index="5"> - 80%</span></h4>
-              </span>
-            </div>
-            <div class="col col-t fragment" data-fragment-index="1">
-              <span class="elm">
-                <h4 class="m0">Transport <span class="fragment" data-fragment-index="4">- 4%</span></h4>
-              </span>
-            </div>
-            <div class="col col-f visible">
-              <span class="elm">
-                <h4 class="m0">Fabrication <span class="fragment" data-fragment-index="3"> - 16%</span></h4>
-              </span>
-            </div>
-          </div>
-      </section>
-      <section data-transition="none">
-        <ul class="cloud" role="navigation" aria-label="Référentiel GreenIT">
-          <li data-weight="2">74 bonnes pratiques du GreenIT</li>
-          <li data-weight="6">GR491</li>
-          <li data-weight="2">RGAA</li>
-          <li data-weight="4">Critères IT du CIGREF</li>
-          <li data-weight="6">RGESN</li>
-          <li data-weight="3">Loi AGEC</li>
-          <li data-weight="4">WSG</li>
-          <li data-weight="5">Loi REEN</li>
-        </ul>
       </section>
       <section data-markdown data-auto-animate>
         <textarea data-template>
@@ -735,7 +782,7 @@
       <section data-markdown data-auto-animate>
         <textarea data-template>
           <br>
-          <h3>A world of Acronymes</h3>
+          <h3>La France au pays des Acronymes</h3>
           <p class="fragment-smaller fragment" data-fragment-index="10"</p>
           <p class="fragment-smallerer fragment" data-fragment-index="17"</p>
           <p class="small text-left fragment" data-fragment-index="1"><strong>COTRI</strong> : Contrat d’Objectifs Territorial pour l’accélération de la  Troisième Révolution Industrielle</p>
@@ -762,6 +809,9 @@
       </section>
       <section data-markdown data-transition="none">
         <textarea data-template>
+          <!-- .slide: data-background="#4631d4" -->
+          ### <span class="text-white">Complexité législative du numérique</span>
+          ---
           ## Lois
           ---
           ### AGEC
@@ -787,10 +837,6 @@
 
           _**516** critères_ <!-- .element: class="fragment" -->
           ---
-          ### Critères IT du CIGREF
-          <small>Club informatique des grandes entreprises françaises</small><br>
-          Critères de décision RSE à intégrer dans le processus d’engagement des projets IT
-          ---
           ### 74 bonnes pratiques du GreenIT
           <small>💚 Association GreenIT.fr 💚</small><br>
           Réduire l’empreinte environnementale et économique d’un système d’information tout en améliorant sa performance sociale.</small>
@@ -805,12 +851,14 @@
           ---
           ### RGAA
           <p><strong>R</strong>éférentiel <strong>G</strong>énéral d’<strong>A</strong>mélioration de l’<strong>A</strong>ccessibilité</p>
+          ---
+          ## La contrainte
           </textarea>
         </section>
         <section data-markdown data-transition="none">
           <textarea data-template>
             <!-- .slide: data-background="rgba(75,150,76, 1)" -->
-            ## <span class="text-white">ACV</span>
+            ## <span class="text-white">Généraliser l’ACV</span>
             ---
             ### Analyse de Cycle de Vie
             > Quantifier les impacts environnementaux d’un service, dans un objectif d’éco-conception…
