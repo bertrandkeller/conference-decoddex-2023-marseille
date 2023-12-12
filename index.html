@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="twitter:image" content="assets/twittercard.png" />
+  <meta property="twitter:title" content="Et toi, t’es conforme GreenIT ?" />
+  <meta name="twitter:site" content="@bertrandkeller" />
+  <meta name="twitter:creator" content="@bertrandkeller" />
+
+  <title>Croissance | DecODDex - 12 Décembre 2023</title>
+
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/black.css">
+
+  <!-- Theme used for syntax highlighted code -->
+  <link rel="stylesheet" href="plugin/highlight/monokai.css">
+  <style>
+    .slides :not(.pdf-page) section {
+      display: flex !important;
+      flex-direction: column;
+      align-items: center !important;
+      justify-content: center !important;
+      height: 100% !important;
+      top: 0 !important;
+    }
+
+    .print-pdf .container {
+      height: auto !important;
+    }
+
+    .print-pdf .containers {
+      width: auto !important;
+    }
+
+    .hide {
+      display: none;
+    }
+
+    .container {
+      top: 0 !important;
+      height: 100vh !important;
+    }
+
+    .containers {
+      position: relative;
+      display: flex;
+      width: 100vw;
+      height: 100vh !important;
+    }
+
+    .containers-v {
+      flex-direction: column;
+      background: #ff7f00;
+    }
+
+    .containers-v .col {
+      transition: flex 2s ease;
+    }
+
+    .containers-v:has(.col-u) .col-u:first-child {
+      background: #b60909;
+    }
+
+    .containers-v .col:not(.visible) {
+      height: 0;
+      flex: 0;
+    }
+
+    .containers-v .col-u.visible {
+      flex: 65;
+      background: #ff7f00;
+    }
+
+    .containers-v .col-t.visible {
+      flex: 10;
+    }
+
+    .containers-v .col-f {
+      flex: 20;
+      background: #ff7f00;
+    }
+
+    section:has(.fixed) {
+      display: flex !important;
+      position: initial !important;
+    }
+
+    .flex {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .flex-column {
+        flex-direction: column;
+    }
+
+    h1,h2 {
+      color: #9485fc;
+    }
+
+    .color-white {
+      color: #fff !important;
+      font-family: Helvetica Neue !important;
+    }
+
+    .reveal h2 {
+      margin: auto;
+      max-width: 80vw;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    h2, strong {
+      color: rgba(75,150,76, 1);
+    }
+
+    .strong {
+      color: #9485fc;
+    }
+
+    .small {
+      font-size: 65%;
+    }
+
+    .reveal h3 + p:has(small){
+      margin-top: -0.5em;
+    }
+
+    .reveal p {
+      max-width: 80%;
+      margin: var(--r-block-margin) auto;
+    }
+
+    .print-pdf .container.present {
+      left: 0 !important;
+      width: 100% !important;
+    }
+
+    .flex>* {
+      padding: 1.5em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .fixed {
+      position: fixed;
+      top: 0px;
+      width: 100%;
+    }
+
+    svg {
+      display: inline-block;
+      max-width: 90%;
+      max-height: 100% height: auto;
+      fill: currentColor;
+      vertical-align: baseline
+    }
+
+    .deck2 {
+      display: none;
+    }
+
+    .col {
+      display: flex;
+      flex: 1;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      background: rgba(75,150,76, 1);
+    }
+
+    .col1 {
+      background: rgba(75,150,76, 1);
+    }
+
+    .col2 {
+      color: #000;
+      background: #fff;
+    }
+
+    .absolute {
+      position: relative !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100vw !important;
+      height: 100vh !important;
+      transform: none !important;
+    }
+
+    .invisible {
+      visibility: hidden;
+    }
+
+    .fragment-smaller.visible ~ * {
+      font-size: 0.3em;
+    }
+
+    .fragment-smallerer.visible ~ * {
+      font-size: 0.2em;
+    }
+
+    .caption {
+      position: absolute;
+      left: 1rem;
+      bottom: -100vh;
+      font-size: 30px;
+    }
+
+    .elm {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      flex-direction: column;
+    }
+
+    .elm :has(.current-fragment) {
+      //transform: scale(2);
+    }
+
+    .box {
+      flex-direction: column;
+      padding: 0.5em 1.5em 0.3em;
+      background: rgba(75,150,76, 1);
+      width: 150px;
+      margin: 10px;
+    }
+
+    .box-v {
+      font-size: 1em;
+      //margin: 0 0 -3em;
+      padding: 1em 0.5em;
+      width: 40vw;
+      //height: 3.5em;
+      //box-shadow: rgba(255, 255, 255, 0.12) 1px 1px 10px;
+      //transform: skewX(-53deg) skewY(-12deg) rotateX(48deg) rotateY(22deg);
+      //transform: skewX(328deg) skewY(359deg) rotateX(67deg) rotateY(4deg);
+    }
+
+    .bgv {
+      background: #4631d4;
+    }
+
+    .vs {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      display: grid;
+      align-items: center;
+      font-size: 1.5em;
+      font-family: Monaco;
+    }
+
+    .vs p {
+      position: relative;
+      margin-inline: auto;
+      display: inline;
+      width: max-content;
+      padding: 5px 10px;
+      z-index: 0;
+    }
+
+    .vs p:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+      content: '';
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, #fff 0%, #fff 49.8%, rgba(0, 0, 0, 1) 49.8%);
+      z-index: -1;
+    }
+
+    .text-left {
+      text-align: left;
+    }
+
+    .text-white {
+      color: #fff;
+    }
+
+    .text-black {
+      color: #000;
+    }
+
+    .ml1 {
+      margin-left: 0.1em;
+    }
+
+    .mr1 {
+      margin-right: 0.08em;
+    }
+
+    p.m0 {
+      margin: 0;
+    }
+
+    p.mb1 {
+      margin-bottom: 0.1;
+    }
+
+    .strong {
+      font-weight: 600;
+    }
+
+    ul.cloud {
+      list-style: none;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      line-height: 6.75rem;
+      width: 80%;
+    }
+
+    ul.cloud li {
+      --size: 4;
+      --color: #a33;
+      color: var(--color);
+      font-size: calc(var(--size) * 0.25rem * 4 + 0.5rem);
+      font-weight: bold;
+      display: block;
+      padding: 0.125rem 0.25rem;
+      position: relative;
+      text-decoration: none;
+    }
+
+    ul.cloud [data-weight="1"] { --size: 1; }
+    ul.cloud [data-weight="2"] { --size: 2; }
+    ul.cloud [data-weight="3"] { --size: 3; }
+    ul.cloud [data-weight="4"] { --size: 4; }
+    ul.cloud [data-weight="5"] { --size: 6; }
+    ul.cloud [data-weight="6"] { --size: 8; }
+    ul.cloud [data-weight="7"] { --size: 10; }
+    ul.cloud [data-weight="8"] { --size: 13; }
+    ul.cloud [data-weight="9"] { --size: 16; }
+
+    ul.cloud li:nth-child(2n+1) { --color: #9485fc; }
+    ul.cloud li:nth-child(3n+1) { --color: #20fc23; }
+    ul.cloud li:nth-child(4n+1) { --color: #f362b3; }
+
+    .reveal :has(.stamp) {
+      margin: 0;
+    }
+
+    .stamp {
+      transform: rotate(12deg);
+      color: #555;
+      font-size: 3rem;
+      font-weight: 700;
+      border: 0.25rem solid #555;
+      display: inline-block;
+      padding: 0.25rem 1rem;
+      text-transform: uppercase;
+      border-radius: 1rem;
+      font-family: 'Courier';
+      -webkit-mask-image: url('assets/grunge.png');
+      -webkit-mask-size: 944px 604px;
+      mix-blend-mode: multiply;
+      font-size: 1.5rem;
+      position: absolute;
+      background: #000;
+    }
+
+    .is-nope {
+      color: #D23;
+      border: 0.5rem double #D23;
+      transform: rotate(3deg) scale(8);
+      -webkit-mask-position: 2rem 3rem;
+    }
+
+    .is-nope.visible {
+      transform: rotate(-14deg);
+    }
+
+    .is-approved {
+      color: #0A9928;
+      border: 0.5rem solid #0A9928;
+      -webkit-mask-position: 13rem 6rem;
+      transform: rotate(-14deg) scale(8);
+      border-radius: 0;
+    }
+
+    .is-approved.visible {
+      transform: rotate(14deg);
+    }
+
+    .is-draft {
+      color: #C4C4C4;
+      border: 1rem double #C4C4C4;
+      transform: rotate(-5deg) scale(4);
+      font-family: "Open sans", Helvetica, Arial, sans-serif;
+      border-radius: 0;
+      padding: 0.5rem;
+    }
+
+    .is-draft.visible {
+      transform: rotate(-5deg);
+    }
+
+    .is-left {
+      top: -6rem;
+      left: 5vw;
+    }
+
+    .is-right {
+      top: -6rem;
+      right: 5vw;
+    }
+
+    .is-center {
+      top: -6rem;
+      left: 32vw;
+    }
+
+    .is-value is-left {
+      color: #fce385;
+      border-color: #fce385;
+    }
+
+    .is-finality is-right {
+      color: #9485fc;
+      border-color: #9485fc;
+    }
+
+    //.stamp {
+    //  -webkit-animation-name: pulse;
+    //  animation-name: pulse;
+    //  animation-delay: 2.5s;
+    //  -webkit-animation-delay:2.5s;
+    //  -webkit-animation-duration: 0.5s;
+    //  animation-duration: 0.5s;
+    //  opacity: 0;
+    //}
+//
+    //@keyframes pulse {
+    //  0% {
+    //    opacity: 0;
+    //  }
+//
+    //  10% {
+    //    opacity:.50;
+    //    transform-origin: 50% 50%;
+    //    transform: rotate(-2deg) scale(5);
+    //    transition: all .3s cubic-bezier(0.6, 0.04, 0.98, 0.335);
+    //  }
+//
+    //  100% {
+    //    opacity: 1;
+    //    transform: rotate(-15deg) scale(1);
+    //  }
+    //}
+    table {
+      width: 90%;
+      font-size: 0.4em;
+    }
+    .reveal ol {
+      counter-reset: index;
+      list-style-type: none;
+      font-size: 0.8em;
+    }
+
+    .reveal ol li::before {
+      counter-increment: index;
+      font-family: Helvetica;
+      content: counters(index, '.', decimal) '. ';
+    }
+
+    .tree ul {
+      margin: 0 !important;
+      padding-top: 20px;
+      position: relative;
+
+      transition: all 0.5s;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+    }
+
+    .tree li {
+      float: left;
+      text-align: center;
+      list-style-type: none;
+      position: relative;
+      padding: 10px 5px 0 5px;
+
+      transition: all 0.5s;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+    }
+
+    .tree li::before,
+    .tree li::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 50%;
+      border-top: 2px solid #ccc;
+      width: 50%;
+      height: 20px;
+    }
+
+    .tree li::after {
+      right: auto;
+      left: 50%;
+      border-left: 2px solid #ccc;
+    }
+
+    .tree li:only-child::after,
+    .tree li:only-child::before {
+      display: none;
+    }
+
+    .tree li:only-child {
+      padding-top: 0;
+    }
+
+    .tree li:first-child::before,
+    .tree li:last-child::after {
+      border: 0 none;
+    }
+
+    .tree li:last-child::before {
+      border-right: 2px solid #ccc;
+      border-radius: 0 5px 0 0;
+      -webkit-border-radius: 0 5px 0 0;
+      -moz-border-radius: 0 5px 0 0;
+    }
+
+    .tree li:first-child::after {
+      border-radius: 5px 0 0 0;
+      -webkit-border-radius: 5px 0 0 0;
+      -moz-border-radius: 5px 0 0 0;
+    }
+
+    .tree ul ul::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      border-left: 2px solid #ccc;
+      width: 0;
+      height: 20px;
+    }
+
+    .tree ul ul ul::before {
+      height: 35px;
+    }
+
+    .tree li a {
+      border: 2px solid #fff;
+      margin-top: 10px;
+      padding: 20px 20px 12px;
+      text-decoration: none;
+      color: #fff;
+      font-size: 0.8em;
+      display: inline-block;
+
+      transition: all 0.5s;
+      -webkit-transition: all 0.5s;
+      -moz-transition: all 0.5s;
+    }
+
+    /*Time for some hover effects*/
+    /*We will apply the hover effect the the lineage of the element also*/
+    .tree li a:hover,
+    .tree li a:hover+ul li a {
+      background: transparent;
+      color: #fff;
+      border: 2px solid #94a0b4;
+    }
+
+    /*Connector styles on hover*/
+    .tree li a:hover+ul li::after,
+    .tree li a:hover+ul li::before,
+    .tree li a:hover+ul::before,
+    .tree li a:hover+ul ul::before {
+      border-color: #94a0b4;
+    }
+
+
+  </style>
+</head>
+
+<body>
+  <div class="reveal deck1">
+    <div class="slides absolute">
+      <section data-transition="none" data-background="#ff7902">
+        <h1 class="color-white">croissance</h1>
+        <small class="fragment">https://hellofuture.orange.com/fr/open-tech-days/</small>
+      </section>
+      <section data-markdown data-transition="none">
+          <textarea data-template>
+            ## Max Weber
+            <small>1864-1920</small>
+          </textarea>
+      </section>
+      <section class="container" data-auto-animate>
+          <div class="containers">
+            <div class="col">
+              <span class="elm">
+                <h4 class="m0">Rationalité en finalité</h4>
+                <p class="small"></p>
+              </span>
+            </div>
+            <div class="col col2">
+              <span class="elm">
+                <h4 class="m0">Rationalité en valeur</h4>
+                <p class="small"></p>
+              </span>
+            </div>
+          </div>
+        </section>
+        <section class="container" data-auto-animate>
+          <div class="containers">
+            <div class="col">
+              <span class="elm">
+                <h4 class="m0">Rationalité en finalité</h4>
+                <p class="fragment small">Irrationnelle en valeur</p>
+              </span>
+            </div>
+          </div>
+        </section>
+        <section data-markdown data-transition="none">
+          <textarea data-template>
+            ## Association GreenIT
+            ---
+            ## 🔥 à l’aide 🔥
+            <small class="fragment">Crie le gouvernement</small>
+            ---
+            ### Désir
+            > Faites nous parvenir 5 propositions qui VOUS semblent les plus urgentes et réalistes pour parvenir à changer notre système de consommation en faveur d’une consommation plus durable et équitable.
+            ---
+            ### Réalité
+            > Consommation plus durable<span class="fragment strong">, mais sans toucher à la liberté de consommation</span><br>
+              **Olivia Grégoire**
+            ---
+            <!-- .slide: data-background="#4631d4" -->
+            ### <span class="text-white">Simple correction<br>sans redirection</span>
+            ---
+            <!-- .slide: data-background="rgba(75,150,76, 1)" -->
+            ### <span class="text-white">Ce qu’on propose</span><br><span class="text-white fragment">quand même</span>
+            ---
+            ### Exemples
+            1. Créer une directive européenne réemploi
+            1. Consigner les EEE neufs
+            1. Allonger la durée de la garantie légale
+            1. Contrôle consommateurs sur les mises à jour logicielles
+            1. Enseignement de la sobriété numérique
+            1. France champion de l’écoconception numériques
+            1. Obligation l’écoconception des services numériques
+            1. Standards et affichage internationaux et européens
+            ---
+            <!-- .slide: data-background="rgba(75,150,76, 1)" -->
+            ## <span class="text-white">Les chiffres</span>
+            ---
+            ### <small>Contribution dépassement limites planétaires</small>
+            | | Frontières de l’UE-28 par indicateur |Pourcentage des frontières de l’UE-28 par indicateur |
+            | ----| --- | ---- |
+            | Utilisation des ressources, minéraux et métaux - kg éq. Sb | 14 700 000 | **39,3 %** |
+            | Utilisation des ressources, fossiles - MJ | 15 000 000 000 000 | **26,4 %** |
+            | Acidification - kg mol éq. H+ | 66 900 000 000 | 1,8 % |
+            | Écotoxicité, eau douce - CTUe | 8 770 000 000 000 | **35,2 %** |
+            | Toxicité humaine, cancer - CTUh | 64 400 | 0,1 % |
+            | Toxicité humaine, non cancéreuse- CTUh | 274 000 | 0,6 % |
+            | Eutrophisation, eau douce - kg éq. P | 389 000 000 | 0,2 % |
+            | Eutrophisation marine - kg éq. N | 13 500 000 000 | 1,2 % |
+            | Eutrophisation, terrestre - mol éq. N | 410 000 000 000 | 0,4 % |
+            | Changement climatique - kg éq. CO2 | 456 000 000 000 | **40,7 %** |
+            | Radiations ionisantes, santé humaine - kBq éq. U235 | 35 300 000 000 000 | 0,8 % |
+            | Appauvrissement de la couche d’ozone - kg CFC-11 eé. | 36 100 000 | 0,1 % |
+            | Émission de particules - apparition de maladies | 34 500 | **23,2 %** |
+            | Formation d’ozone photochimique, santé humaine - kg éq. COVNM | 27 200 000 000 | 1,7 % |
+            ---
+            ## Complexité
+            ---
+            ### Principe de Conway
+            > La structure d’un problème reflète la structure de l’organisation qui l’a créé.<br>
+              **Bill Corcoran**
+            ---
+            ## Numérique
+            **6%** du PIB
+            ---
+            > **40%** de notre budget pour rester en dessous de **1,5°C** de réchauffement climatique est dédié au numérique
+          </textarea>
+      </section>
+      <section class="container" data-auto-animate>
+          <div class="containers containers-v">
+            <div class="col col-u fragment" data-fragment-index="2">
+              <span class="elm">
+                <h4 class="m0">Utilisation <span class="fragment" data-fragment-index="5"> - 80%</span></h4>
+              </span>
+            </div>
+            <div class="col col-t fragment" data-fragment-index="1">
+              <span class="elm">
+                <h4 class="m0">Transport <span class="fragment" data-fragment-index="4">- 4%</span></h4>
+              </span>
+            </div>
+            <div class="col col-f visible">
+              <span class="elm">
+                <h4 class="m0">Fabrication <span class="fragment" data-fragment-index="3"> - 16%</span></h4>
+              </span>
+            </div>
+          </div>
+      </section>
+      <section data-transition="none">
+        <ul class="cloud" role="navigation" aria-label="Référentiel GreenIT">
+          <li data-weight="2">74 bonnes pratiques du GreenIT</li>
+          <li data-weight="6">GR491</li>
+          <li data-weight="2">RGAA</li>
+          <li data-weight="4">Critères IT du CIGREF</li>
+          <li data-weight="6">RGESN</li>
+          <li data-weight="3">Loi AGEC</li>
+          <li data-weight="4">WSG</li>
+          <li data-weight="5">Loi REEN</li>
+        </ul>
+      </section>
+      <section data-markdown data-auto-animate>
+        <textarea data-template>
+          <h3>A world of Acronymes</h3>
+        </textarea>
+      </section>
+      <section data-markdown data-auto-animate>
+        <textarea data-template>
+          <br>
+          <h3>A world of Acronymes</h3>
+          <p class="fragment-smaller fragment" data-fragment-index="10"</p>
+          <p class="fragment-smallerer fragment" data-fragment-index="17"</p>
+          <p class="small text-left fragment" data-fragment-index="1"><strong>COTRI</strong> : Contrat d’Objectifs Territorial pour l’accélération de la  Troisième Révolution Industrielle</p>
+          <p class="small text-left fragment" data-fragment-index="2"><strong>EPCI</strong> : Etablissement Public de Coopération Intercommunale</p>
+          <p class="small text-left fragment" data-fragment-index="3"><strong>PAT</strong> : Projet Alimentaire Territorial</p>
+          <p class="small text-left fragment" data-fragment-index="4"><strong>PCAET</strong> : Plan Climat Air Energie Territorial</p>
+          <p class="small text-left fragment" data-fragment-index="5"><strong>PLU</strong> : Plan Local d’Urbanisme</p>
+          <p class="small text-left fragment" data-fragment-index="6"><strong>PNR</strong> : Parc Naturel Régional</p>
+          <p class="small text-left fragment" data-fragment-index="7"><strong>SCOT</strong> : Schéma de COhérence Territorial</p>
+          <p class="small text-left fragment" data-fragment-index="8"><strong>SNBC</strong> : Stratégie Nationale Bas Carbone</p>
+          <p class="small text-left fragment" data-fragment-index="9"><strong>SRADDET</strong> : Schéma Régional d’Aménagement, de Développement Durable et d’Egalité des Territoires</p>
+          <p class="small text-left fragment" data-fragment-index="10"><strong>SRGS</strong> : Schéma Régional de Gestion Sylvicole</p>
+          <p class="small text-left fragment" data-fragment-index="12"><strong>SDAGE</strong> : Schéma Directeur d’Aménagement et de Gestion des Eaux</p>
+          <p class="small text-left fragment" data-fragment-index="13"><strong>HCNE</strong> : Haut Comité pour le Numérique Écoresponsable</p>
+          <p class="small text-left fragment" data-fragment-index="14"><strong>CDPENAF</strong> : Commission Départementale de Préservation des Espaces Naturels Agricoles et Forestiers</p>
+          <p class="small text-left fragment" data-fragment-index="15"><strong>SNAP</strong> : Stratégie Nationale pour les Aires Protégées</p>
+          <p class="small text-left fragment" data-fragment-index="16"><strong>OFB</strong> : Office National de Biodiversité</p>
+          <p class="small text-left fragment" data-fragment-index="17"><strong>SRGS</strong> : Schéma Régional de Gestion Sylvicole</p>
+          <p class="small text-left fragment" data-fragment-index="18"><strong>UICN</strong> : Union Internationale pour la Conservation de la Nature </p>
+          <p class="small text-left fragment" data-fragment-index="19"><strong>CLE</strong> : Commission locale de l’eau</p>
+          <p class="small text-left fragment" data-fragment-index="20"><strong>PAGD</strong> : Plan d’aménagement et de Gestion Durable</p>
+          <p class="small text-left fragment" data-fragment-index="21"><strong>SAGE</strong> : Schéma d’Aménagement et de Gestion des Eaux</p>
+        </textarea>
+      </section>
+      <section data-markdown data-transition="none">
+        <textarea data-template>
+          ## Lois
+          ---
+          ### AGEC
+          <small>10 février 2020</small><br>
+          > Anti-Gaspillage pour une Économie Circulaire
+          ---
+          ### REEN
+          <small>15 novembre 2021</small><br>
+          > Réduire l’Empreinte Environnementale du Numérique
+          ---
+          ### Loi handicap
+          <small>11 février 2005</small><br>
+
+          Nouveau décret d’application du 24 juillet 2019  <!-- .element: class="fragment" -->
+
+          Respect de la Directive Européenne EN 301 549  <!-- .element: class="fragment" -->
+          ---
+          ## Référentiels
+          ---
+          ### GR491
+          <small>Institut National du Numérique</small><br>
+          Le <strong>G</strong>uide de <strong>R</strong>éférence de Conception Responsable
+
+          _**516** critères_ <!-- .element: class="fragment" -->
+          ---
+          ### Critères IT du CIGREF
+          <small>Club informatique des grandes entreprises françaises</small><br>
+          Critères de décision RSE à intégrer dans le processus d’engagement des projets IT
+          ---
+          ### 74 bonnes pratiques du GreenIT
+          <small>💚 Association GreenIT.fr 💚</small><br>
+          Réduire l’empreinte environnementale et économique d’un système d’information tout en améliorant sa performance sociale.</small>
+
+          <small>+</small> <!-- .element: class="fragment" -->
+          <small>**115** bonnes pratiques du **N**umérique **R**esponsable.</small> <!-- .element: class="fragment" -->
+          ---
+          ### RGESN
+          <small>DINUM - INR - ADEME - Ministère de la Transition Écologique - ARCEP - INRIA </small>
+
+          <strong>R</strong>éférentiel <strong>G</strong>énéral d’<strong>É</strong>coconception de <strong>S</strong>ervices <strong>N</strong>umériques
+          ---
+          ### RGAA
+          <p><strong>R</strong>éférentiel <strong>G</strong>énéral d’<strong>A</strong>mélioration de l’<strong>A</strong>ccessibilité</p>
+          </textarea>
+        </section>
+        <section data-markdown data-transition="none">
+          <textarea data-template>
+            <!-- .slide: data-background="rgba(75,150,76, 1)" -->
+            ## <span class="text-white">ACV</span>
+            ---
+            ### Analyse de Cycle de Vie
+            > Quantifier les impacts environnementaux d’un service, dans un objectif d’éco-conception…
+          </textarea>
+        </section>
+        <section data-transition="fade" data-background-image="assets/Cycle-de-vie-dun-service-numerique-Marie-Chevallier-2021.pbm" data-background="#fff" data-background-size="66%">
+          <p class="caption">Marie Chevallier 2021</p>
+        </section>
+        <section data-transition="fade" data-background-image="assets/cycle-de-vie-numerique-1024x538.jpg" data-background="#fff" data-background-size="86%">
+          <p class="caption">Julie Landais</p>
+        </section>
+        <section data-markdown data-transition="none">
+          <textarea data-template>
+            <!-- .slide: data-background="#4631d4" -->
+            ### <span class="text-white">Conclusion</span>
+          </textarea>
+        </section>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <script src="dist/reveal.js"></script>
+  <script src="plugin/notes/notes.js"></script>
+  <script src="plugin/markdown/markdown.js"></script>
+  <script src="plugin/highlight/highlight.js"></script>
+  <script>
+    let deck1 = new Reveal(document.querySelector('.deck1'), {
+      controls: false,
+      hash: true,
+      progress: false,
+      backgroundTransition: 'none',
+      plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+    });
+    deck1.on('slidechanged', () => {
+      console.log('Deck 1 slide changed');
+    });
+    deck1.initialize();
+
+  </script>
+</body>
+
+</html>
