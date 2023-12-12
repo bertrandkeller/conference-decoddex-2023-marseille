@@ -191,27 +191,56 @@ section.has-light-background, section.has-light-background h1, section.has-light
   font-style: italic;
   background: rgba(255, 255, 255, 0.05);
   quotes: "\201C" "\201D" "\2018" "\2019";
+  quotes: '“' '”' '“' '”';
 }
 
-// .reveal blockquote:before {
-//   color: #ccc;
-//   content: open-quote;
-//   font-size: 4em;
-//   line-height: 0.1em;
-//   margin-right: 0.15em;
-//   vertical-align: -0.4em;
-// }
-//
-// .reveal blockquote:after {
-//   display: none;
-//   color: #ccc;
-//   content: close-quote;
-//   font-size: 4em;
-//   line-height: 0.1em;
-//   margin-right: -0.5em;
-//   vertical-align: -0.4em;
-//   vertical-align: bottom;
-// }
+.reveal blockquote p {
+  max-width: 100%;
+}
+
+.reveal blockquote:before {
+  position: absolute;
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+  top: 95px;
+  left: -0.6em;
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.15em;
+  vertical-align: -0.4em;
+}
+
+.reveal blockquote:after {
+  position: absolute;
+  display: flex;
+  align-items: flex-end;
+  bottom: -30px;
+  height: 100%;
+  right: 20px;
+  color: #ccc;
+  content: close-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: -0.5em;
+  vertical-align: -0.4em;
+  vertical-align: bottom;
+}
+
+/* Fallback */
+blockquote {
+  text-indent: -0.45em;
+}
+
+/* S'il y a un support, effacez le retrait et utilisez la propriété à la place */
+@supports (hanging-punctuation: first) {
+  blockquote {
+    text-indent: 0;
+    hanging-punctuation: first;
+  }
+}
 
 
 .reveal blockquote p:first-child,
